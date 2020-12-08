@@ -1,8 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const SongList = () => {
-  return <div>SONG LIST</div>;
+const SongList = ({ songs }) => {
+  const rederedList = songs.map((song) => <div>{song.title}</div>);
+  return <div>{rederedList}</div>;
 };
 
-export default connect()(SongList);
+const mapStateToProps = (state) => {
+  console.log(state);
+
+  return { songs: state.songsList };
+};
+
+export default connect(mapStateToProps)(SongList);
